@@ -8,5 +8,7 @@ var myClass = (function(){
         camera,
         box;
 
+    function initScene(){
+    }
 
 })();
