@@ -31,18 +31,6 @@ var demo = (function () {
     };
 
 
-    function rotate(object, axis, value) {
-        object.rotation[axis] = value * (Math.PI / 180);
-    }
-
-    function move(item, axis, value) {
-        item.position[axis] = value;
-    }
-
-    function scale(item, axis, value) {
-        item.scale[axis] = value;
-    }
-
     function render() {
         moveOrbitingCube(cube2);
         renderer.render(scene, camera);
@@ -268,5 +256,17 @@ var demo = (function () {
         this.cubeXScale = cube.scale.x;
         this.cubeYScale = cube.scale.y;
         this.cubeZScale = cube.scale.z;
+    }
+
+    function rotate(object, axis, value) {
+        object.rotation[axis] = value * (Math.PI / 180);
+    }
+
+    function move(item, axis, value) {
+        item.position[axis] = value;
+    }
+
+    function scale(item, axis, value) {
+        item.scale[axis] = value;
     }
 })();
