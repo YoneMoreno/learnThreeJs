@@ -16,7 +16,6 @@ var demo = (function () {
 
     function initScene() {
         setRendererIntoWebPage();
-
         scene.add(light);
         setCamera();
         setGround();
@@ -31,7 +30,7 @@ var demo = (function () {
     };
 
 
-    window.onload = initScene;
+    loadSceneOnWIndowLoad();
 
     return {
         scene: scene
@@ -157,6 +156,10 @@ var demo = (function () {
         renderer.render(scene, camera);
         requestAnimationFrame(render);
     };
+
+    function loadSceneOnWIndowLoad() {
+        window.onload = initScene;
+    }
 
 
     function setCameraVariablesEventsControlledByGui(gui, itemsToControl) {
