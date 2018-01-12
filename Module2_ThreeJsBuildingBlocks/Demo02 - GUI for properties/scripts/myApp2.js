@@ -33,21 +33,8 @@ var demo = (function () {
 
         setChildCube();
 
-        //spinning cube
-        cube2 = new THREE.Mesh(
-            new THREE.BoxGeometry(
-                2,
-                2,
-                2),
-            new THREE.MeshBasicMaterial({color: 0xFF0000}));
 
-        cube2.name = "cube2";
-        cube2.position.x = -50;
-        cube2.position.Y = 20;
-        cube2.add(light2);
-
-
-        scene.add(cube2);
+        setSpinningCube();
 
         assignColorsToCube(cube);
 
@@ -269,4 +256,20 @@ var demo = (function () {
         cube.add(cube3);
     }
 
+    function setSpinningCube() {
+        cube2 = new THREE.Mesh(
+            new THREE.BoxGeometry(
+                2,
+                2,
+                2),
+            new THREE.MeshBasicMaterial({color: 0xFF0000}));
+
+        cube2.name = "cube2";
+        cube2.position.x = -50;
+        cube2.position.Y = 20;
+        cube2.add(light2);
+
+
+        scene.add(cube2);
+    }
 })();
