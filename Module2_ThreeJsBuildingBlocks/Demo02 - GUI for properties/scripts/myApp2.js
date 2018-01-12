@@ -28,6 +28,14 @@ var myClass = (function () {
         camera.position.z = 100;
         scene.add(camera);
 
+        var texture = THREE.ImageUtils.loadTexture('content/grasslight-big.jpg');
+        var planeMaterial = new THREE.MeshPhongMaterial({map: texture, side: THREE.DoubleSide});
+        plane = new THREE.Mesh(new THREE.PlaneGeometry(200, 200), planeMaterial);
+        plane.rotation.x = 90 * (Math.PI / 180);
+        plane.position.y = -10;
+        plane.name = "plane";
+        scene.add(plane);
+
 
     }
 })();
