@@ -31,17 +31,6 @@ var demo = (function () {
     };
 
 
-    //math from http://stackoverflow.com/questions/10341581/javascript-threejs-equation-to-move-an-object-in-a-circle-around-a-central-y
-    function moveOrbitingCube(object) {
-
-        var theta = 0.05; //amount to rotate by
-        var x = object.position.x;
-        var z = object.position.z;
-
-        object.position.x = x * Math.cos(theta) + z * Math.sin(theta);
-        object.position.z = z * Math.cos(theta) - x * Math.sin(theta);
-    }
-
     window.onload = initScene;
 
     return {
@@ -268,5 +257,15 @@ var demo = (function () {
 
     function scale(item, axis, value) {
         item.scale[axis] = value;
+    }
+
+    function moveOrbitingCube(object) {
+
+        var theta = 0.05; //amount to rotate by
+        var x = object.position.x;
+        var z = object.position.z;
+
+        object.position.x = x * Math.cos(theta) + z * Math.sin(theta);
+        object.position.z = z * Math.cos(theta) - x * Math.sin(theta);
     }
 })();
