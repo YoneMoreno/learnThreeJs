@@ -64,7 +64,10 @@ var demo = (function () {
 
 
         for (var i = 0; i < 12; i += 2) {
-            var color = colorBothTrianglesWhichFormACubeFace();
+            var color = colors[i / 2];
+
+            cube.geometry.faces[i].color = color;
+            cube.geometry.faces[i + 1].color = color;
         }
     }
 
@@ -180,6 +183,7 @@ var demo = (function () {
     function render() {
         moveOrbitingCube(cube2);
 
+
         renderer.render(scene, camera);
         requestAnimationFrame(render);
     };
@@ -276,13 +280,5 @@ var demo = (function () {
     function setSceneAxisVisualReference() {
         var axesHelper = new THREE.AxisHelper(300);
         scene.add(axesHelper);
-    }
-
-    function colorBothTrianglesWhichFormACubeFace() {
-        var color = colors[i / 2];
-
-        cube.geometry.faces[i].color = color;
-        cube.geometry.faces[i + 1].color = color;
-        return color;
     }
 })();
