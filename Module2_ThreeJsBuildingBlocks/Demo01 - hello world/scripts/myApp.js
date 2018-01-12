@@ -2,8 +2,9 @@ var myClass = (function () {
 
     "use strict";
 
+
     var scene = new THREE.Scene(),
-        renderer = window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer(),
+        renderer = useModernBrowserWebGLOrOlderOnesCanvasSupport(),
         light = new THREE.AmbientLight(0xffffff),
         camera,
         box;
@@ -17,12 +18,11 @@ var myClass = (function () {
         render();
     }
 
+    setUpSceneWhenWIndowLoads();
 
     function setUpSceneWhenWIndowLoads() {
         window.onload = initScene;
     }
-
-    setUpSceneWhenWIndowLoads();
 
 
     function setRenderer() {
@@ -57,6 +57,10 @@ var myClass = (function () {
         box.rotation.y += 0.01;
         renderer.render(scene, camera);
         requestAnimationFrame(render);
+    }
+
+    function useModernBrowserWebGLOrOlderOnesCanvasSupport() {
+        return window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer();
     }
 
     return {
