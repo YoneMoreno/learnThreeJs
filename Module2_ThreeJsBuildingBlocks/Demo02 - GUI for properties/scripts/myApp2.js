@@ -38,9 +38,8 @@ var demo = (function () {
 
         assignColorsToCube(cube);
 
-        var cubeAxesHelper = new THREE.AxisHelper(50);
-        cube.add(cubeAxesHelper);
-        scene.add(cube);
+
+        setCubeAxisVisualReference();
 
 
         var axesHelper = new THREE.AxisHelper(300);
@@ -271,5 +270,11 @@ var demo = (function () {
 
 
         scene.add(cube2);
+    }
+
+    function setCubeAxisVisualReference() {
+        var cubeAxesHelper = new THREE.AxisHelper(50);
+        cube.add(cubeAxesHelper);
+        scene.add(cube);
     }
 })();
