@@ -27,18 +27,8 @@ var demo = (function () {
 
         setGround();
 
-        //main cube
-        cube = new THREE.Mesh(
-            new THREE.BoxGeometry(
-                20,
-                20,
-                20),
-            new THREE.MeshBasicMaterial({
 
-                vertexColors: THREE.VertexColors
-            }));
-
-        cube.name = "cube";
+        setMainCube();
 
         //green child cube
         cube3 = new THREE.Mesh(
@@ -259,6 +249,20 @@ var demo = (function () {
         plane.position.y = -10;
         plane.name = "plane";
         scene.add(plane);
+    }
+
+    function setMainCube() {
+        cube = new THREE.Mesh(
+            new THREE.BoxGeometry(
+                20,
+                20,
+                20),
+            new THREE.MeshBasicMaterial({
+
+                vertexColors: THREE.VertexColors
+            }));
+
+        cube.name = "cube";
     }
 
 })();
