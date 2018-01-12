@@ -8,13 +8,29 @@ var myClass = (function () {
         camera,
         box;
 
+
     function initScene() {
+        setRenderer();
+        scene.add(light);
+        setCamera();
+        setBox();
+        render();
+    }
+
+
+    function setUpSceneWhenWIndowLoads() {
+        window.onload = initScene;
+    }
+
+    setUpSceneWhenWIndowLoads();
+
+
+    function setRenderer() {
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById("webgl-container").appendChild(renderer.domElement);
+    }
 
-
-        scene.add(light);
-
+    function setCamera() {
         camera = new THREE.PerspectiveCamera(
             35,
             window.innerWidth / window.innerHeight,
@@ -24,7 +40,9 @@ var myClass = (function () {
 
         camera.position.z = 100;
         scene.add(camera);
+    }
 
+    function setBox() {
         box = new THREE.Mesh(
             new THREE.BoxGeometry(20, 20, 20),
             new THREE.MeshBasicMaterial({color: 0xFF0000})
@@ -33,21 +51,15 @@ var myClass = (function () {
         box.name = "box";
 
         scene.add(box);
-
-        render();
     }
 
     function render() {
         box.rotation.y += 0.01;
-
         renderer.render(scene, camera);
         requestAnimationFrame(render);
     }
 
-    window.onload = initScene;
-
     return {
         scene: scene
-    }
-
+    };
 })();
