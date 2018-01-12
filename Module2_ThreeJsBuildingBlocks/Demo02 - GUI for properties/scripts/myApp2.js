@@ -30,17 +30,8 @@ var demo = (function () {
 
         setMainCube();
 
-        //green child cube
-        cube3 = new THREE.Mesh(
-            new THREE.BoxGeometry(
-                10,
-                10,
-                10),
-            new THREE.MeshBasicMaterial({color: 0x00FF00}));
 
-        cube3.name = "cube3";
-        cube3.position.y = 30; //offset it from parent so we can see it
-        cube.add(cube3);
+        setChildCube();
 
         //spinning cube
         cube2 = new THREE.Mesh(
@@ -263,6 +254,19 @@ var demo = (function () {
             }));
 
         cube.name = "cube";
+    }
+
+    function setChildCube() {
+        cube3 = new THREE.Mesh(
+            new THREE.BoxGeometry(
+                10,
+                10,
+                10),
+            new THREE.MeshBasicMaterial({color: 0x00FF00}));
+
+        cube3.name = "cube3";
+        cube3.position.y = 30; //offset it from parent so we can see it
+        cube.add(cube3);
     }
 
 })();
