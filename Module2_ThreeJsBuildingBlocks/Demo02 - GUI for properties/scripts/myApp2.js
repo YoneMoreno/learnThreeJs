@@ -42,8 +42,7 @@ var demo = (function () {
         setCubeAxisVisualReference();
 
 
-        var axesHelper = new THREE.AxisHelper(300);
-        scene.add(axesHelper);
+        setSceneAxisVisualReference();
 
         setupGui();
 
@@ -63,13 +62,9 @@ var demo = (function () {
             new THREE.Color("rgb(255,0,255)")
         ];
 
+
         for (var i = 0; i < 12; i += 2) {
-
-            var color = colors[i / 2];
-
-            //each cube face is made up of 2 triangles & we want same color for each
-            cube.geometry.faces[i].color = color;
-            cube.geometry.faces[i + 1].color = color;
+            var color = colorBothTrianglesWhichFormACubeFace();
         }
     }
 
@@ -276,5 +271,18 @@ var demo = (function () {
         var cubeAxesHelper = new THREE.AxisHelper(50);
         cube.add(cubeAxesHelper);
         scene.add(cube);
+    }
+
+    function setSceneAxisVisualReference() {
+        var axesHelper = new THREE.AxisHelper(300);
+        scene.add(axesHelper);
+    }
+
+    function colorBothTrianglesWhichFormACubeFace() {
+        var color = colors[i / 2];
+
+        cube.geometry.faces[i].color = color;
+        cube.geometry.faces[i + 1].color = color;
+        return color;
     }
 })();
