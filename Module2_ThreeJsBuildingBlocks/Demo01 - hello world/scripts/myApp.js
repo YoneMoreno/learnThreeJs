@@ -5,18 +5,19 @@ var myClass = (function () {
 
     var scene = new THREE.Scene(),
         renderer = useModernBrowserWebGLOrOlderOnesCanvasSupport(),
-        light = new THREE.AmbientLight(0xffffff),
+        light,
         camera,
         box;
 
 
     function initScene() {
         setRenderer();
-        scene.add(light);
+        setLight();
         setCamera();
         setBox();
         render();
     }
+
 
     setUpSceneWhenWIndowLoads();
 
@@ -28,6 +29,11 @@ var myClass = (function () {
     function setRenderer() {
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById("webgl-container").appendChild(renderer.domElement);
+    }
+
+    function setLight() {
+        light = new THREE.AmbientLight(0xffffff);
+        scene.add(light);
     }
 
     function setCamera() {
