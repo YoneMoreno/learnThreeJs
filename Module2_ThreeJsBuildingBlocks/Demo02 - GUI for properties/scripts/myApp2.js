@@ -98,47 +98,11 @@ var demo = (function () {
         var gui = new dat.GUI();
 
 
-//camera
         setCameraVariablesEventsControlledByGui(gui, itemsToControl);
 
-        //cube
-        var cubeXPos = gui.add(itemsToControl, 'cubeXPos', -200, 200);
-        var cubeYPos = gui.add(itemsToControl, 'cubeYPos', -200, 200);
-        var cubeZPos = gui.add(itemsToControl, 'cubeZPos', -200, 200);
-        var cubeXRotation = gui.add(itemsToControl, 'cubeXRotation', 0, 360);
-        var cubeYRotation = gui.add(itemsToControl, 'cubeYRotation', 0, 360);
-        var cubeZRotation = gui.add(itemsToControl, 'cubeZRotation', 0, 360);
-        var cubeXScale = gui.add(itemsToControl, 'cubeXScale', 1, 10);
-        var cubeYScale = gui.add(itemsToControl, 'cubeYScale', 1, 10);
-        var cubeZScale = gui.add(itemsToControl, 'cubeZScale', 1, 10);
 
-        cubeXPos.onChange(function (value) {
-            move(cube, 'x', value)
-        });
-        cubeYPos.onChange(function (value) {
-            move(cube, 'y', value)
-        });
-        cubeZPos.onChange(function (value) {
-            move(cube, 'z', value)
-        });
-        cubeXRotation.onChange(function (value) {
-            rotate(cube, 'x', value)
-        });
-        cubeYRotation.onChange(function (value) {
-            rotate(cube, 'y', value)
-        });
-        cubeZRotation.onChange(function (value) {
-            rotate(cube, 'z', value)
-        });
-        cubeXScale.onChange(function (value) {
-            scale(cube, 'x', value)
-        });
-        cubeYScale.onChange(function (value) {
-            scale(cube, 'y', value)
-        });
-        cubeZScale.onChange(function (value) {
-            scale(cube, 'z', value)
-        });
+//cube
+        setCubeVariablesEventsControlledByGui(gui, itemsToControl);
     }
 
     function rotate(object, axis, value) {
@@ -282,6 +246,46 @@ var demo = (function () {
         });
         cameraZRotation.onChange(function (value) {
             rotate(camera, 'z', value)
+        });
+    }
+
+    function setCubeVariablesEventsControlledByGui(gui, itemsToControl) {
+        var cubeXPos = gui.add(itemsToControl, 'cubeXPos', -200, 200);
+        var cubeYPos = gui.add(itemsToControl, 'cubeYPos', -200, 200);
+        var cubeZPos = gui.add(itemsToControl, 'cubeZPos', -200, 200);
+        var cubeXRotation = gui.add(itemsToControl, 'cubeXRotation', 0, 360);
+        var cubeYRotation = gui.add(itemsToControl, 'cubeYRotation', 0, 360);
+        var cubeZRotation = gui.add(itemsToControl, 'cubeZRotation', 0, 360);
+        var cubeXScale = gui.add(itemsToControl, 'cubeXScale', 1, 10);
+        var cubeYScale = gui.add(itemsToControl, 'cubeYScale', 1, 10);
+        var cubeZScale = gui.add(itemsToControl, 'cubeZScale', 1, 10);
+
+        cubeXPos.onChange(function (value) {
+            move(cube, 'x', value)
+        });
+        cubeYPos.onChange(function (value) {
+            move(cube, 'y', value)
+        });
+        cubeZPos.onChange(function (value) {
+            move(cube, 'z', value)
+        });
+        cubeXRotation.onChange(function (value) {
+            rotate(cube, 'x', value)
+        });
+        cubeYRotation.onChange(function (value) {
+            rotate(cube, 'y', value)
+        });
+        cubeZRotation.onChange(function (value) {
+            rotate(cube, 'z', value)
+        });
+        cubeXScale.onChange(function (value) {
+            scale(cube, 'x', value)
+        });
+        cubeYScale.onChange(function (value) {
+            scale(cube, 'y', value)
+        });
+        cubeZScale.onChange(function (value) {
+            scale(cube, 'z', value)
         });
     }
 })();
