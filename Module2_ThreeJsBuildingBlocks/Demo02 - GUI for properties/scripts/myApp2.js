@@ -33,20 +33,6 @@ var demo = (function () {
     };
 
 
-    function setupGui() {
-
-        var itemsToControl = new function () {
-            variablesToControllInTheGui.call(this, camera, cube);
-
-        };
-
-        var gui = new dat.GUI();
-
-        setCameraVariablesEventsControlledByGui(gui, itemsToControl);
-
-        setCubeVariablesEventsControlledByGui(gui, itemsToControl);
-    }
-
     function rotate(object, axis, value) {
         object.rotation[axis] = value * (Math.PI / 180);
     }
@@ -182,6 +168,16 @@ var demo = (function () {
         var axesHelper = new THREE.AxisHelper(300);
         scene.add(axesHelper);
     }
+
+    function setupGui() {
+        var itemsToControl = new function () {
+            variablesToControllInTheGui.call(this, camera, cube);
+        };
+        var gui = new dat.GUI();
+        setCameraVariablesEventsControlledByGui(gui, itemsToControl);
+        setCubeVariablesEventsControlledByGui(gui, itemsToControl);
+    }
+
 
     function setCameraVariablesEventsControlledByGui(gui, itemsToControl) {
         var cameraXPos = gui.add(itemsToControl, 'cameraXPos', -200, 200);
