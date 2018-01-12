@@ -74,24 +74,7 @@ var demo = (function () {
     function setupGui() {
 
         var itemsToControl = new function () {
-
-            this.cameraXPos = camera.position.x,
-                this.cameraYPos = camera.position.y,
-                this.cameraZPos = camera.position.z;
-            this.cameraXRotation = camera.rotation.x;
-            this.cameraYRotation = camera.rotation.y;
-            this.cameraZRotation = camera.rotation.z;
-
-            this.cubeXPos = cube.position.x,
-                this.cubeYPos = cube.position.y,
-                this.cubeZPos = cube.position.z,
-                this.cubeXRotation = cube.rotation.x;
-            this.cubeYRotation = cube.rotation.y;
-            this.cubeZRotation = cube.rotation.z;
-
-            this.cubeXScale = cube.scale.x;
-            this.cubeYScale = cube.scale.y;
-            this.cubeZScale = cube.scale.z;
+            variablesToControllInTheGui.call(this, camera, cube);
 
         };
 
@@ -287,5 +270,25 @@ var demo = (function () {
         cubeZScale.onChange(function (value) {
             scale(cube, 'z', value)
         });
+    }
+
+    function variablesToControllInTheGui(camera, cube) {
+        this.cameraXPos = camera.position.x,
+            this.cameraYPos = camera.position.y,
+            this.cameraZPos = camera.position.z;
+        this.cameraXRotation = camera.rotation.x;
+        this.cameraYRotation = camera.rotation.y;
+        this.cameraZRotation = camera.rotation.z;
+
+        this.cubeXPos = cube.position.x,
+            this.cubeYPos = cube.position.y,
+            this.cubeZPos = cube.position.z,
+            this.cubeXRotation = cube.rotation.x;
+        this.cubeYRotation = cube.rotation.y;
+        this.cubeZRotation = cube.rotation.z;
+
+        this.cubeXScale = cube.scale.x;
+        this.cubeYScale = cube.scale.y;
+        this.cubeZScale = cube.scale.z;
     }
 })();
