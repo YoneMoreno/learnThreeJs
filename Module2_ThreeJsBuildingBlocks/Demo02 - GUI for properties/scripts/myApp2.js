@@ -13,11 +13,9 @@ var demo = (function () {
         plane,
         ground;
 
+
     function initScene() {
-
-
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById("webgl-container").appendChild(renderer.domElement);
+        setRendererIntoWebPage();
 
         scene.add(light);
         setCamera();
@@ -66,6 +64,11 @@ var demo = (function () {
 
     return {
         scene: scene
+    }
+
+    function setRendererIntoWebPage() {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById("webgl-container").appendChild(renderer.domElement);
     }
 
     function setCamera() {
