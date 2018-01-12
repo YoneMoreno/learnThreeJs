@@ -21,15 +21,8 @@ var demo = (function () {
 
         scene.add(light);
 
-        camera = new THREE.PerspectiveCamera(
-            35,
-            window.innerWidth / window.innerHeight,
-            1,
-            1000
-        );
 
-        camera.position.z = 100;
-        scene.add(camera);
+        setCamera();
 
 
         setGround();
@@ -244,6 +237,18 @@ var demo = (function () {
 
     return {
         scene: scene
+    }
+
+    function setCamera() {
+        camera = new THREE.PerspectiveCamera(
+            35,
+            window.innerWidth / window.innerHeight,
+            1,
+            1000
+        );
+
+        camera.position.z = 100;
+        scene.add(camera);
     }
 
     function setGround() {
