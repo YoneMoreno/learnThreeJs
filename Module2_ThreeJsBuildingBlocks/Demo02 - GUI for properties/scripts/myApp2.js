@@ -20,56 +20,18 @@ var demo = (function () {
         document.getElementById("webgl-container").appendChild(renderer.domElement);
 
         scene.add(light);
-
-
         setCamera();
-
-
         setGround();
-
-
         setMainCube();
-
-
         setChildCube();
-
-
         setSpinningCube();
-
         assignColorsToCube(cube);
-
-
         setCubeAxisVisualReference();
-
-
         setSceneAxisVisualReference();
-
         setupGui();
-
         requestAnimationFrame(render);
-
     };
 
-    function assignColorsToCube(cube) {
-
-
-        var colors = [
-            new THREE.Color("rgb(255,0,0)"),
-            new THREE.Color("rgb(0,255,0)"),
-            new THREE.Color("rgb(0,0,255)"),
-            new THREE.Color("rgb(255,255,0)"),
-            new THREE.Color("rgb(0,255,255)"),
-            new THREE.Color("rgb(255,0,255)")
-        ];
-
-
-        for (var i = 0; i < 12; i += 2) {
-            var color = colors[i / 2];
-
-            cube.geometry.faces[i].color = color;
-            cube.geometry.faces[i + 1].color = color;
-        }
-    }
 
     function setupGui() {
 
@@ -80,11 +42,8 @@ var demo = (function () {
 
         var gui = new dat.GUI();
 
-
         setCameraVariablesEventsControlledByGui(gui, itemsToControl);
 
-
-//cube
         setCubeVariablesEventsControlledByGui(gui, itemsToControl);
     }
 
@@ -102,8 +61,6 @@ var demo = (function () {
 
     function render() {
         moveOrbitingCube(cube2);
-
-
         renderer.render(scene, camera);
         requestAnimationFrame(render);
     };
@@ -169,6 +126,7 @@ var demo = (function () {
                 10,
                 10,
                 10),
+
             new THREE.MeshBasicMaterial({color: 0x00FF00}));
 
         cube3.name = "cube3";
@@ -191,6 +149,27 @@ var demo = (function () {
 
 
         scene.add(cube2);
+    }
+
+    function assignColorsToCube(cube) {
+
+
+        var colors = [
+            new THREE.Color("rgb(255,0,0)"),
+            new THREE.Color("rgb(0,255,0)"),
+            new THREE.Color("rgb(0,0,255)"),
+            new THREE.Color("rgb(255,255,0)"),
+            new THREE.Color("rgb(0,255,255)"),
+            new THREE.Color("rgb(255,0,255)")
+        ];
+
+
+        for (var i = 0; i < 12; i += 2) {
+            var color = colors[i / 2];
+
+            cube.geometry.faces[i].color = color;
+            cube.geometry.faces[i + 1].color = color;
+        }
     }
 
     function setCubeAxisVisualReference() {
