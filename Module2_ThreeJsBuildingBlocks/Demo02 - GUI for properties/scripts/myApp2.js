@@ -31,12 +31,6 @@ var demo = (function () {
     };
 
 
-    function render() {
-        moveOrbitingCube(cube2);
-        renderer.render(scene, camera);
-        requestAnimationFrame(render);
-    };
-
     //math from http://stackoverflow.com/questions/10341581/javascript-threejs-equation-to-move-an-object-in-a-circle-around-a-central-y
     function moveOrbitingCube(object) {
 
@@ -168,6 +162,12 @@ var demo = (function () {
         setCameraVariablesEventsControlledByGui(gui, itemsToControl);
         setCubeVariablesEventsControlledByGui(gui, itemsToControl);
     }
+
+    function render() {
+        moveOrbitingCube(cube2);
+        renderer.render(scene, camera);
+        requestAnimationFrame(render);
+    };
 
 
     function setCameraVariablesEventsControlledByGui(gui, itemsToControl) {
