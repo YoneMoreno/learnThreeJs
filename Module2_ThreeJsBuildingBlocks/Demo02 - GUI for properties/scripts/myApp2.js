@@ -73,9 +73,6 @@ var demo = (function () {
 
     function setupGui() {
 
-        //var cube = scene.getObjectByName('cube');
-
-        //note we could link the various object properties directly to the gui but this would prevent us from being able to modify them e.g. radians to degrees
         var itemsToControl = new function () {
 
             this.cameraXPos = camera.position.x,
@@ -101,32 +98,8 @@ var demo = (function () {
         var gui = new dat.GUI();
 
 
-        //camera
-        var cameraXPos = gui.add(itemsToControl, 'cameraXPos', -200, 200);
-        var cameraYPos = gui.add(itemsToControl, 'cameraYPos', -200, 200);
-        var cameraZPos = gui.add(itemsToControl, 'cameraZPos', -400, 400);
-        var cameraXRotation = gui.add(itemsToControl, 'cameraXRotation', 0, 360);
-        var cameraYRotation = gui.add(itemsToControl, 'cameraYRotation', 0, 360);
-        var cameraZRotation = gui.add(itemsToControl, 'cameraZRotation', 0, 360);
-
-        cameraXPos.onChange(function (value) {
-            move(camera, 'x', value)
-        });
-        cameraYPos.onChange(function (value) {
-            move(camera, 'y', value)
-        });
-        cameraZPos.onChange(function (value) {
-            move(camera, 'z', value)
-        });
-        cameraXRotation.onChange(function (value) {
-            rotate(camera, 'x', value)
-        });
-        cameraYRotation.onChange(function (value) {
-            rotate(camera, 'y', value)
-        });
-        cameraZRotation.onChange(function (value) {
-            rotate(camera, 'z', value)
-        });
+//camera
+        setCameraVariablesEventsControlledByGui(gui, itemsToControl);
 
         //cube
         var cubeXPos = gui.add(itemsToControl, 'cubeXPos', -200, 200);
@@ -206,6 +179,8 @@ var demo = (function () {
     }
 
     function setCamera() {
+
+
         camera = new THREE.PerspectiveCamera(
             35,
             window.innerWidth / window.innerHeight,
@@ -280,5 +255,33 @@ var demo = (function () {
     function setSceneAxisVisualReference() {
         var axesHelper = new THREE.AxisHelper(300);
         scene.add(axesHelper);
+    }
+
+    function setCameraVariablesEventsControlledByGui(gui, itemsToControl) {
+        var cameraXPos = gui.add(itemsToControl, 'cameraXPos', -200, 200);
+        var cameraYPos = gui.add(itemsToControl, 'cameraYPos', -200, 200);
+        var cameraZPos = gui.add(itemsToControl, 'cameraZPos', -400, 400);
+        var cameraXRotation = gui.add(itemsToControl, 'cameraXRotation', 0, 360);
+        var cameraYRotation = gui.add(itemsToControl, 'cameraYRotation', 0, 360);
+        var cameraZRotation = gui.add(itemsToControl, 'cameraZRotation', 0, 360);
+
+        cameraXPos.onChange(function (value) {
+            move(camera, 'x', value)
+        });
+        cameraYPos.onChange(function (value) {
+            move(camera, 'y', value)
+        });
+        cameraZPos.onChange(function (value) {
+            move(camera, 'z', value)
+        });
+        cameraXRotation.onChange(function (value) {
+            rotate(camera, 'x', value)
+        });
+        cameraYRotation.onChange(function (value) {
+            rotate(camera, 'y', value)
+        });
+        cameraZRotation.onChange(function (value) {
+            rotate(camera, 'z', value)
+        });
     }
 })();
