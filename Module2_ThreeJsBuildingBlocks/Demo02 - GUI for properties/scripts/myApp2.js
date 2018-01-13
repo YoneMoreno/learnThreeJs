@@ -167,13 +167,15 @@ var demo = (function () {
     }
 
     function setCubeAxisVisualReference() {
-        var cubeAxesHelper = new THREE.AxisHelper(50);
+        const size = 50;
+        var cubeAxesHelper = new THREE.AxisHelper(size);
         mainCube.add(cubeAxesHelper);
         scene.add(mainCube);
     }
 
     function setSceneAxisVisualReference() {
-        var axesHelper = new THREE.AxisHelper(300);
+        const size = 300;
+        var axesHelper = new THREE.AxisHelper(size);
         scene.add(axesHelper);
     }
 
