@@ -37,11 +37,15 @@ var myClass = (function () {
     }
 
     function setCamera() {
+        const far = 1000;
+        const near =  1;
+        const aspect =  window.innerWidth / window.innerHeight;
+        const fov =  35;
         camera = new THREE.PerspectiveCamera(
-            35,
-            window.innerWidth / window.innerHeight,
-            1,
-            1000
+            fov,
+            aspect,
+            near,
+            far
         );
 
         camera.position.z = 100;
