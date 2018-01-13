@@ -8,7 +8,7 @@ var demo = (function () {
         camera,
         renderer = new THREE.WebGLRenderer(),
         mainCube,
-        cube2,
+        spinningCube,
         childCube,
         plane,
         ground;
@@ -117,40 +117,52 @@ var demo = (function () {
     }
 
     function setSpinningCube() {
-        cube2 = new THREE.Mesh(
+        const width = 2;
+        const height = 2;
+        const depth = 2;
+        const red = {color: 0xFF0000};
+
+        spinningCube = new THREE.Mesh(
             new THREE.BoxGeometry(
-                2,
-                2,
-                2),
-            new THREE.MeshBasicMaterial({color: 0xFF0000}));
+                width,
+                height,
+                depth),
+            new THREE.MeshBasicMaterial(red));
 
-        cube2.name = "cube2";
-        cube2.position.x = -50;
-        cube2.position.Y = 20;
-        cube2.add(light2);
-
-
-        scene.add(cube2);
+        spinningCube.name = "spinningCube";
+        spinningCube.position.x = -50;
+        spinningCube.position.Y = 20;
+        spinningCube.add(light2);
+        scene.add(spinningCube);
     }
 
     function assignColorsToCube(cube) {
-
+        const red = "rgb(255,0,0)";
+        const green = "rgb(0,255,0)";
+        const blue = "rgb(0,0,255)";
+        const yellow = "rgb(255,255,0)";
+        const cyan = "rgb(0,255,255)";
+        const magenta = "rgb(255,0,255)";
 
         var colors = [
-            new THREE.Color("rgb(255,0,0)"),
-            new THREE.Color("rgb(0,255,0)"),
-            new THREE.Color("rgb(0,0,255)"),
-            new THREE.Color("rgb(255,255,0)"),
-            new THREE.Color("rgb(0,255,255)"),
-            new THREE.Color("rgb(255,0,255)")
+            new THREE.Color(red),
+            new THREE.Color(green),
+            new THREE.Color(blue),
+            new THREE.Color(yellow),
+            new THREE.Color(cyan),
+            new THREE.Color(magenta)
         ];
 
 
         for (var i = 0; i < 12; i += 2) {
-            var color = colors[i / 2];
 
-            cube.geometry.faces[i].color = color;
-            cube.geometry.faces[i + 1].color = color;
+            const currentFaceToApplyColorTo = i / 2;
+            const firstHalfOfTheCubeFace = i;
+            const secondHalfOfTheCubeFace = i + 1;
+
+            var color = colors[currentFaceToApplyColorTo];
+            cube.geometry.faces[firstHalfOfTheCubeFace].color = color;
+            cube.geometry.faces[secondHalfOfTheCubeFace].color = color;
         }
     }
 
@@ -175,7 +187,7 @@ var demo = (function () {
     }
 
     function render() {
-        moveOrbitingCube(cube2);
+        moveOrbitingCube(spinningCube);
         renderer.render(scene, camera);
         requestAnimationFrame(render);
     };
