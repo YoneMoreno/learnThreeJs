@@ -42,13 +42,17 @@ var demo = (function () {
     }
 
     function setCamera() {
+        const fov = 35;
+        const aspect = window.innerWidth / window.innerHeight;
+        const near = 1;
+        const far = 1000;
 
 
         camera = new THREE.PerspectiveCamera(
-            35,
-            window.innerWidth / window.innerHeight,
-            1,
-            1000
+            fov,
+            aspect,
+            near,
+            far
         );
 
         camera.position.z = 100;
