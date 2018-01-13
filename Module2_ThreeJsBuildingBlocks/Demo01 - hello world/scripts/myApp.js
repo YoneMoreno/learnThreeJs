@@ -53,8 +53,11 @@ var myClass = (function () {
     }
 
     function setBox() {
+        const width = 20;
+        const height = 20;
+        const depth = 20;
         box = new THREE.Mesh(
-            new THREE.BoxGeometry(20, 20, 20),
+            new THREE.BoxGeometry(width, height, depth),
             new THREE.MeshBasicMaterial({color: 0xFF0000})
         );
 
