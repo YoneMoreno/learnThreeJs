@@ -60,10 +60,19 @@ var demo = (function () {
     }
 
     function setGround() {
-        var texture = THREE.ImageUtils.loadTexture('content/grasslight-big.jpg') //texture from three.js examples
+        const groundTexturePath = 'content/grasslight-big.jpg';
+
+        var texture = THREE.ImageUtils.loadTexture(groundTexturePath);
         var planeMaterial = new THREE.MeshPhongMaterial({map: texture, side: THREE.DoubleSide});
-        plane = new THREE.Mesh(new THREE.PlaneGeometry(200, 200), planeMaterial);
-        plane.rotation.x = 90 * (Math.PI / 180);
+
+        const planeWidth = 200;
+        const planeHeight = 200;
+
+        plane = new THREE.Mesh(new THREE.PlaneGeometry(planeWidth, planeHeight), planeMaterial);
+
+        const convertRadiansToDegrees = (Math.PI / 180);
+
+        plane.rotation.x = 90 * convertRadiansToDegrees;
         plane.position.y = -10;
         plane.name = "plane";
         scene.add(plane);
