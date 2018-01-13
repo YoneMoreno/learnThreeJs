@@ -7,9 +7,9 @@ var demo = (function () {
         light2 = new THREE.PointLight(0xffffff),
         camera,
         renderer = new THREE.WebGLRenderer(),
-        cube,
+        mainCube,
         cube2,
-        cube3,
+        childCube,
         plane,
         ground;
 
@@ -22,7 +22,7 @@ var demo = (function () {
         setMainCube();
         setChildCube();
         setSpinningCube();
-        assignColorsToCube(cube);
+        assignColorsToCube(mainCube);
         setCubeAxisVisualReference();
         setSceneAxisVisualReference();
         setupGui();
@@ -84,7 +84,7 @@ var demo = (function () {
         const depth = 20;
         const applyDifferentColorsToEachFace = THREE.VertexColors;
 
-        cube = new THREE.Mesh(
+        mainCube = new THREE.Mesh(
             new THREE.BoxGeometry(
                 width,
                 height,
@@ -93,21 +93,27 @@ var demo = (function () {
                 vertexColors: applyDifferentColorsToEachFace
             }));
 
-        cube.name = "cube";
+        mainCube.name = "mainCube";
     }
 
     function setChildCube() {
-        cube3 = new THREE.Mesh(
+        const width = 10;
+        const height = 10;
+        const depth = 10;
+        const green = {color: 0x00FF00};
+        const offsetChildCubeFromParentToBeAbleToSeeIt = 30;
+
+        childCube = new THREE.Mesh(
             new THREE.BoxGeometry(
-                10,
-                10,
-                10),
+                width,
+                height,
+                depth),
+            new THREE.MeshBasicMaterial(green));
 
-            new THREE.MeshBasicMaterial({color: 0x00FF00}));
+        childCube.name = "childCube";
 
-        cube3.name = "cube3";
-        cube3.position.y = 30; //offset it from parent so we can see it
-        cube.add(cube3);
+        childCube.position.y = offsetChildCubeFromParentToBeAbleToSeeIt;
+        mainCube.add(childCube);
     }
 
     function setSpinningCube() {
@@ -150,8 +156,8 @@ var demo = (function () {
 
     function setCubeAxisVisualReference() {
         var cubeAxesHelper = new THREE.AxisHelper(50);
-        cube.add(cubeAxesHelper);
-        scene.add(cube);
+        mainCube.add(cubeAxesHelper);
+        scene.add(mainCube);
     }
 
     function setSceneAxisVisualReference() {
@@ -161,7 +167,7 @@ var demo = (function () {
 
     function setupGui() {
         var itemsToControl = new function () {
-            variablesToControllInTheGui.call(this, camera, cube);
+            variablesToControllInTheGui.call(this, camera, mainCube);
         };
         var gui = new dat.GUI();
         setCameraVariablesEventsControlledByGui(gui, itemsToControl);
@@ -219,31 +225,31 @@ var demo = (function () {
         var cubeZScale = gui.add(itemsToControl, 'cubeZScale', 1, 10);
 
         cubeXPos.onChange(function (value) {
-            move(cube, 'x', value)
+            move(mainCube, 'x', value)
         });
         cubeYPos.onChange(function (value) {
-            move(cube, 'y', value)
+            move(mainCube, 'y', value)
         });
         cubeZPos.onChange(function (value) {
-            move(cube, 'z', value)
+            move(mainCube, 'z', value)
         });
         cubeXRotation.onChange(function (value) {
-            rotate(cube, 'x', value)
+            rotate(mainCube, 'x', value)
         });
         cubeYRotation.onChange(function (value) {
-            rotate(cube, 'y', value)
+            rotate(mainCube, 'y', value)
         });
         cubeZRotation.onChange(function (value) {
-            rotate(cube, 'z', value)
+            rotate(mainCube, 'z', value)
         });
         cubeXScale.onChange(function (value) {
-            scale(cube, 'x', value)
+            scale(mainCube, 'x', value)
         });
         cubeYScale.onChange(function (value) {
-            scale(cube, 'y', value)
+            scale(mainCube, 'y', value)
         });
         cubeZScale.onChange(function (value) {
-            scale(cube, 'z', value)
+            scale(mainCube, 'z', value)
         });
     }
 
