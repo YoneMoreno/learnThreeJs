@@ -79,14 +79,18 @@ var demo = (function () {
     }
 
     function setMainCube() {
+        const width = 20;
+        const height = 20;
+        const depth = 20;
+        const applyDifferentColorsToEachFace = THREE.VertexColors;
+
         cube = new THREE.Mesh(
             new THREE.BoxGeometry(
-                20,
-                20,
-                20),
+                width,
+                height,
+                depth),
             new THREE.MeshBasicMaterial({
-
-                vertexColors: THREE.VertexColors
+                vertexColors: applyDifferentColorsToEachFace
             }));
 
         cube.name = "cube";
